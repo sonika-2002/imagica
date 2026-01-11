@@ -1,0 +1,66 @@
+<div class="modal" id="modal3">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title text-center text-primary"><b>Sign In</b></h2>
+                <button class="close" data-dismiss="modal">
+                    <span>
+                        &times;
+                    </span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="signObj">
+                    <div class="form-group">
+                        <label>Name:</label>
+                        <input type="text" formControlName="name" class="form-control">
+                        <div class="text-danger">
+                            @if(signObj.controls["name"].touched && signObj.controls["name"].errors?.["required"]){
+                                <span>This is required</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Contact No:</label>
+                        <input type="tel" formControlName="contact" class="form-control">
+                        <div class="text-danger">
+                            @if(signObj.controls["contact"].touched && signObj.controls["contact"].errors?.["required"]){
+                                <span>This is required</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Address:</label>
+                        <textarea formControlName="address" class="form-control"></textarea>
+                        <div class="text-danger">
+                            @if(signObj.controls["address"].touched && signObj.controls["address"].errors?.["required"]){
+                                <span>This is required</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Pincode:</label>
+                        <input class="form-control" formControlName="pincode" type="number">
+                        <div class="text-danger">
+                            @if(signObj.controls["pincode"].touched && signObj.controls["pincode"].errors?.["required"]){
+                                <span>This is required</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender:</label>
+                        <input type="radio" name="Gender" value="Male">Male
+                        <input type="radio" name="Gender" value="Female">Female
+                        <input type="radio" name="Gender" value="Other">Other
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group text-center">
+                    <button class="btn btn-primary" (click)="onSubmit()" [disabled]="signObj.invalid" data-dismiss="modal" type="submit">Sign In</button>
+                <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
